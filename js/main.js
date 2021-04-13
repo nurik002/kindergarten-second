@@ -1,6 +1,5 @@
-
 // ---------Responsive-navbar-active-animation-----------
-function test(){
+function test() {
     var tabsNewAnim = $('#navbarSupportedContent');
     var selectorNewAnim = $('#navbarSupportedContent').find('li').length;
     var activeItemNewAnim = tabsNewAnim.find('.active');
@@ -9,12 +8,12 @@ function test(){
     var itemPosNewAnimTop = activeItemNewAnim.position();
     var itemPosNewAnimLeft = activeItemNewAnim.position();
     $(".hori-selector").css({
-        "top":itemPosNewAnimTop.top + "px",
-        "left":itemPosNewAnimLeft.left + "px",
+        "top": itemPosNewAnimTop.top + "px",
+        "left": itemPosNewAnimLeft.left + "px",
         "height": activeWidthNewAnimHeight + "px",
         "width": activeWidthNewAnimWidth + "px"
     });
-    $("#navbarSupportedContent").on("click","li",function(e){
+    $("#navbarSupportedContent").on("click", "li", function (e) {
         $('#navbarSupportedContent ul li').removeClass("active");
         $(this).addClass('active');
         var activeWidthNewAnimHeight = $(this).innerHeight();
@@ -22,19 +21,44 @@ function test(){
         var itemPosNewAnimTop = $(this).position();
         var itemPosNewAnimLeft = $(this).position();
         $(".hori-selector").css({
-            "top":itemPosNewAnimTop.top + "px",
-            "left":itemPosNewAnimLeft.left + "px",
+            "top": itemPosNewAnimTop.top + "px",
+            "left": itemPosNewAnimLeft.left + "px",
             "height": activeWidthNewAnimHeight + "px",
             "width": activeWidthNewAnimWidth + "px"
         });
     });
 }
-$(document).ready(function(){
-    setTimeout(function(){ test(); });
+
+$(document).ready(function () {
+    setTimeout(function () {
+        test();
+    });
 });
-$(window).on('resize', function(){
-    setTimeout(function(){ test(); }, 500);
+$(window).on('resize', function () {
+    setTimeout(function () {
+        test();
+    }, 500);
 });
-$(".navbar-toggler").click(function(){
-    setTimeout(function(){ test(); });
+$(".navbar-toggler").click(function () {
+    setTimeout(function () {
+        test();
+    });
+});
+
+// button top
+$(document).ready(function () {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 20) {
+            $('#toTopBtn').fadeIn();
+        } else {
+            $('#toTopBtn').fadeOut();
+        }
+    });
+
+    $('#toTopBtn').click(function () {
+        $("html, body").animate({
+            scrollTop: 0
+        }, 1000);
+        return false;
+    });
 });
